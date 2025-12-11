@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { PROFILE } from "@/data/profile";
 
@@ -13,9 +12,8 @@ const satoshi = localFont({
 });
 
 
-
 export const metadata: Metadata = {
-  metadataBase: new URL('https://portfolio-26.vercel.app'), // Placeholder, user to update
+  metadataBase: new URL('https://aryayama.vercel.app'), // Placeholder, user to update
   title: {
     default: PROFILE.name,
     template: `%s | ${PROFILE.name}`,
