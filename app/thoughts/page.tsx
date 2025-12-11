@@ -5,6 +5,14 @@ import Link from 'next/link';
 import { THOUGHTS } from "@/data/thoughts";
 import Navigation from "@/components/Navigation";
 
+// Helper to calculate read time
+function getReadTime(text: string) {
+    const wordsPerMinute = 200;
+    const words = text.trim().split(/\s+/).length;
+    const minutes = Math.ceil(words / wordsPerMinute);
+    return `${minutes} min read`;
+}
+
 export default function Thoughts() {
     return (
         <div className="min-h-screen w-full flex items-start md:items-center justify-center px-4 md:px-12 lg:px-32 pb-8 pt-24 md:pt-8 relative overflow-hidden selection:bg-white/20 selection:text-white">
@@ -27,7 +35,7 @@ export default function Thoughts() {
                 <header className="flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="text-left">
                         <h1 className="font-display text-4xl md:text-5xl font-bold tracking-tighter text-white">
-                            Fragments of thought.
+                            Fragments of my thought.
                         </h1>
                     </div>
 
@@ -53,8 +61,9 @@ export default function Thoughts() {
                                     transition={{ delay: index * 0.1 }}
                                     className="group flex flex-col gap-2 relative pl-6 border-l border-white/10 hover:border-white/50 transition-colors duration-300"
                                 >
-                                    <div className="flex items-center gap-3 text-white/40 group-hover:text-white/60 transition-colors text-sm font-mono uppercase tracking-widest">
+                                    <div className="flex items-center justify-between text-white/40 group-hover:text-white/60 transition-colors text-sm font-mono uppercase tracking-widest w-full">
                                         <span>{thought.date}</span>
+                                        <span>{getReadTime(thought.content || '')}</span>
                                     </div>
 
                                     <Link href={`/thoughts/${thought.id}`} className="block group-hover:translate-x-1 transition-transform duration-300">

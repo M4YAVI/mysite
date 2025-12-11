@@ -18,6 +18,14 @@ import Image from 'next/image';
 
 import { useParams } from 'next/navigation';
 
+// Helper to calculate read time
+function getReadTime(text: string) {
+    const wordsPerMinute = 200;
+    const words = text.trim().split(/\s+/).length;
+    const minutes = Math.ceil(words / wordsPerMinute);
+    return `${minutes} min read`;
+}
+
 export default function ThoughtPage() {
     const params = useParams();
     const thought = THOUGHTS.find(t => t.id === params.id);
@@ -33,6 +41,8 @@ export default function ThoughtPage() {
             </div>
         );
     }
+
+    const readTime = getReadTime(thought.content || '');
 
     return (
         <div className="min-h-screen w-full flex justify-center bg-[#0a0a0a] selection:bg-white/20 selection:text-white pb-32">
@@ -65,9 +75,9 @@ export default function ThoughtPage() {
                     transition={{ delay: 0.1, duration: 0.5 }}
                     className="flex flex-col gap-6"
                 >
-                    <div className="flex items-center gap-4">
-                        <span className="font-mono text-sm text-white/40">{thought.date}</span>
-                        <div className="h-px bg-white/10 flex-grow max-w-[100px]" />
+                    <div className="flex items-center justify-between text-white/40 text-sm font-mono w-full">
+                        <span>{thought.date}</span>
+                        <span>{readTime}</span>
                     </div>
                     <h1 className="text-4xl md:text-6xl font-display font-medium text-white leading-tight">
                         {thought.title}
