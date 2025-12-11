@@ -15,7 +15,7 @@ function getReadTime(text: string) {
 
 export default function Thoughts() {
     return (
-        <div className="min-h-screen w-full flex items-start md:items-center justify-center px-4 md:px-12  pb-8 pt-24 md:pt-8 relative overflow-hidden selection:bg-white/20 selection:text-white">
+        <div className="min-h-screen w-full flex items-start md:items-center justify-center px-4 md:px-12 lg:px-24 pb-8 pt-24 md:pt-8 relative overflow-hidden selection:bg-white/20 selection:text-white">
 
             {/* Dynamic Background Gradient */}
             <motion.div
