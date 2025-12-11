@@ -52,7 +52,7 @@ export default function ThoughtPage() {
     const readTime = getReadTime(thought.content || '');
 
     return (
-        <div className="min-h-screen w-full flex justify-center bg-[#0a0a0a] selection:bg-white/20 selection:text-white pb-32">
+        <div className="min-h-screen w-full flex items-start justify-center px-4 md:px-12 lg:px-32 pb-8 pt-24 md:pt-8 relative overflow-hidden bg-[#0a0a0a] selection:bg-white/20 selection:text-white">
 
             {/* Reading Progress Tracker */}
             <motion.div
@@ -83,7 +83,7 @@ export default function ThoughtPage() {
                 className="fixed inset-0 z-0 pointer-events-none bg-[#1a1a1a]"
             />
 
-            <div className="relative z-10 w-full max-w-3xl px-6 md:px-12 pt-24 md:pt-32 flex flex-col gap-10">
+            <div className="relative z-10 w-full max-w-3xl px-6 md:px-12 mt-8 flex flex-col gap-10">
 
                 {/* Back Link */}
                 <motion.div

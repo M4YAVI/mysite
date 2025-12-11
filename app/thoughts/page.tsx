@@ -15,7 +15,7 @@ function getReadTime(text: string) {
 
 export default function Thoughts() {
     return (
-        <div className="min-h-screen w-full flex items-start md:items-center justify-center px-4 md:px-12 lg:px-24 pb-8 pt-24 md:pt-8 relative overflow-hidden selection:bg-white/20 selection:text-white">
+        <div className="min-h-screen w-full flex items-start justify-center px-4 md:px-12 lg:px-32 pb-8 pt-24 md:pt-8 relative overflow-hidden selection:bg-white/20 selection:text-white">
 
             {/* Dynamic Background Gradient */}
             <motion.div
@@ -89,7 +89,7 @@ export default function Thoughts() {
                     className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 pointer-events-auto"
                 >
                     <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 backdrop-blur-md border border-white/5 hover:border-white/20 hover:bg-white/10 transition-all duration-300 group shadow-lg shadow-black/20">
-                        <span className="font-mono text-xs tracking-widest uppercase group-hover:text-white transition-colors text-white">Say Hi on X</span>
+                        <span className="font-mono text-xs tracking-widest uppercase group-hover:text-white transition-colors text-white">Say Hi on </span>
                         <a
                             href="https://x.com/M4Y4VI"
                             target="_blank"

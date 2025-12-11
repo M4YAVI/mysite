@@ -145,8 +145,9 @@ export default function HomeClient() {
                             colSpan="md:col-span-4"
                             rowSpan="md:row-span-2"
                             delay={0.3}
+                            padding="p-4"
                         >
-                            <div className="h-full flex flex-col justify-center gap-6 p-2">
+                            <div className="h-full flex flex-col justify-center gap-8">
                                 <div>
                                     <span className="text-white uppercase text-[10px] font-bold tracking-[0.2em] block mb-3">Likes</span>
                                     <div className="flex flex-wrap gap-2">

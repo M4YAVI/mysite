@@ -27,13 +27,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://portfolio-26.vercel.app",
+    url: "https://aryayama.vercel.app",
     title: PROFILE.name,
     description: PROFILE.description,
     siteName: PROFILE.name,
     images: [
       {
-        url: "/me.jpeg", // Using the high-res profile image
+        url: "/me.jpeg",
         width: 1200,
         height: 630,
         alt: PROFILE.name,

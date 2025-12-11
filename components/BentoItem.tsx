@@ -7,14 +7,16 @@ interface BentoProps {
   colSpan?: string;
   rowSpan?: string;
   delay?: number;
+  padding?: string;
 }
 
-const BentoItem: React.FC<BentoProps> = ({ 
-  children, 
-  className = "", 
-  colSpan = "col-span-1", 
+const BentoItem: React.FC<BentoProps> = ({
+  children,
+  className = "",
+  colSpan = "col-span-1",
   rowSpan = "row-span-1",
-  delay = 0 
+  delay = 0,
+  padding = "p-6"
 }) => {
   return (
     <motion.div
@@ -27,8 +29,8 @@ const BentoItem: React.FC<BentoProps> = ({
       {/* Decorative gradient blob */}
       <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/5 rounded-full blur-3xl group-hover:bg-white/10 transition-all duration-500" />
       <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-black/20 rounded-full blur-3xl" />
-      
-      <div className="relative h-full w-full p-6 flex flex-col">
+
+      <div className={`relative h-full w-full ${padding} flex flex-col`}>
         {children}
       </div>
     </motion.div>
