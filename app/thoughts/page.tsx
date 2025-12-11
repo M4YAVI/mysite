@@ -81,7 +81,7 @@ export default function Thoughts() {
                     <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 backdrop-blur-md border border-white/5 hover:border-white/20 hover:bg-white/10 transition-all duration-300 group shadow-lg shadow-black/20">
                         <span className="font-mono text-xs tracking-widest uppercase group-hover:text-white/70 transition-colors text-white/40">Say Hi on X</span>
                         <a
-                            href="https://x.com/"
+                            href="https://x.com/M4Y4VI"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-white/60 group-hover:text-white transition-colors"
