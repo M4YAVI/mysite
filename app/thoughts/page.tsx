@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import { THOUGHTS } from "@/data/thoughts";
 import Navigation from "@/components/Navigation";
 
@@ -56,11 +57,11 @@ export default function Thoughts() {
                                         <span>{thought.date}</span>
                                     </div>
 
-                                    <a href={thought.link} className="block group-hover:translate-x-1 transition-transform duration-300">
+                                    <Link href={`/thoughts/${thought.id}`} className="block group-hover:translate-x-1 transition-transform duration-300">
                                         <h2 className="text-2xl md:text-3xl font-display font-medium text-white/90 group-hover:text-white transition-colors">
                                             {thought.title}
                                         </h2>
-                                    </a>
+                                    </Link>
 
                                     <p className="text-white/50 group-hover:text-white/70 transition-colors font-light leading-relaxed max-w-2xl">
                                         {thought.description}
