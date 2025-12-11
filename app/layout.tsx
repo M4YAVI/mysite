@@ -1,21 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Lora } from "next/font/google";
+import localFont from "next/font/local";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
-const lora = Lora({
-  variable: "--font-lora",
-  subsets: ["latin"],
-  style: ['normal', 'italic'],
+const satoshi = localFont({
+  src: './Satoshi-Font/Satoshi-Variable.ttf',
+  variable: '--font-satoshi',
+  display: 'swap',
+  weight: '300 900', // Variable font weight range
 });
 
 export const metadata: Metadata = {
@@ -31,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${lora.variable} antialiased`}
+        className={`${satoshi.variable} antialiased`}
       >
         {children}
       </body>

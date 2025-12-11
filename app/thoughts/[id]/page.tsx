@@ -137,8 +137,7 @@ export default function ThoughtPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.5 }}
-                    className="prose prose-invert prose-xl max-w-none text-gray-300 font-serif leading-loose space-y-8 mt-4"
-                    style={{ fontFamily: 'var(--font-lora)' }}
+                    className="prose prose-invert prose-xl max-w-none text-gray-300 leading-loose space-y-8 mt-4"
                 >
                     {(thought.content || '').split('\n').map((paragraph, index) => {
                         // Trim whitespace and ignore empty lines if they are just formatting noise
