@@ -1,56 +1,26 @@
 export const THOUGHTS = [
-    {
-        id: 'design-philosophy',
-        title: 'The Art of subtraction',
-        date: 'Oct 2025',
-        description: 'Why removing features is harder than adding them. Simplicity is the ultimate sophistication, but it requires a deep understanding of what is truly essential.',
-        content: `
-In a world obsessed with "more"—more features, more speed, more connection—the act of subtraction becomes a radical design choice. It's not about emptiness for emptiness's sake, but about clarity.
 
-When we remove the non-essential, we give the essential room to breathe. We allow the user to focus on what truly matters. This isn't just aesthetic; it's functional.
-
-Every element you add to a screen increases the cognitive load. Every pixel competes for attention. By rigorously subtracting, we respect the user's mental energy.
-        `,
-        images: ['/thought-1.png'],
-        link: '#'
-    },
     {
-        id: 'ai-ethics',
-        title: 'Ghosts in the Machine',
-        date: 'Nov 2025',
-        description: 'Reflections on consciousness and code. As we build systems that mimic thought, we must ask ourselves: what separates simulation from reality?',
-        content: `
-We build mirrors that reflect our intelligence back at us, but sometimes the reflection seems to move on its own. The "ghost in the machine" is no longer just a philosophical concept; it's a debugging challenge.
-
-As LLMs become more convincing, the line between "simulating understanding" and "understanding" blurs. Does it matter if the machine feels, if it can make us feel?
-        `,
-        images: [],
-        link: '#'
-    },
-    {
-        id: 'digital-gardening',
-        title: 'Digital Gardening',
+        id: 'the-return',
+        title: 'The Return',
         date: 'Dec 2025',
-        description: 'Cultivating ideas over time rather than publishing finished pieces. The web was meant to be a living, breathing space for unfinished thoughts.',
+        description: 'The most profound escape is not an escape at all, but a return—a return to the quiet place inside your chest where life stops rushing and starts understanding.',
         content: `
-The "publish" button feels final. A digital garden is never finished. It grows, weeds appear, branches are pruned.
+You see, there is something almost heartbreakingly funny about how human beings chase after peace the way children chase after butterflies arms flailing, breath short, eyes desperate never realizing that the butterfly would have landed gently on their shoulder if only they had been still for a moment. Home, in its quiet and unassuming way, offers that stillness. It does not demand money or miles or perfectly curated photographs; it simply asks you to show up as you are, and somehow that simplicity feels worth more than any faraway horizon, does it not?
 
-I'm moving away from the concept of a "blog post" towards "notes" and "explorations". This site itself is a garden.
-        `,
-        images: [],
-        link: '#'
-    },
-    {
-        id: 'silence',
-        title: 'The Loudness of Silence',
-        date: 'Jan 2026',
-        description: 'In a world unique with noise, silence is the new luxury. Designing for quiet interfaces that respect user attention.',
-        content: `
-Notifications, badges, popups. The modern web screams at you. Designing for silence means creating interfaces that wait for you to initiate interaction.
+Because when you really think about it, the places we long to visit are often just mirrors reflecting what we already wish we felt. A beach is the desire for calm. A forest is the desire for grounding. A city skyline is the desire for possibility. These desires do not live in those places they live inside us and we carry them from room to room, like a soft light glowing behind the ribs. That is why home can feel like such a sanctuary. It lets you listen to yourself without the noise of expectation humming in the background.
 
-It's about passive availability rather than active intrusion.
+Yet people keep insisting that the discomfort of travel is "worth it," as if peace must be earned through struggle, as if joy only counts when it is difficult to reach. And I cannot help but wonder why we treat rest like a distant treasure instead of a gentle right we are allowed to claim without apology. If teleportation suddenly existed, every single argument about "the journey being the point" would crumble instantly, would it not? Because we would all choose ease, we would all choose immediacy, we would all choose to arrive without the weariness of getting there. That truth reveals something quietly monumental: the longing is never for the road; it is always for the feeling at the end of it.
+
+So here I am, choosing to stay, choosing the soft familiarity of my own space, choosing the comfort that wraps around me like a warm evening breeze. And maybe that sounds simple, almost too simple, but there is a royal kind of contentment in discovering that peace does not need a passport. It just needs permission. Your own permission. And once you give it, everything your thoughts, your breath, your heartbeat settles into a rhythm that feels like finally coming home even while you never left.
+
+And perhaps that is the real point I am trying to make: that the most profound escape is not an escape at all, but a return a return to the quiet place inside your chest where life stops rushing and starts understanding. A place that does not require fuel or tickets or tolls, only a willingness to sit down and feel the miracle of being exactly where you already are.
+
+If that is not beautiful, then what is?
         `,
-        images: [],
+        images: ['/metv.jpeg'],
         link: '#'
     }
+
+
 ];

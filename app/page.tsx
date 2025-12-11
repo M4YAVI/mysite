@@ -62,7 +62,7 @@ export default function Home() {
                 <div className="mt-6 flex items-center gap-3">
                   <div className="h-px w-12 bg-white/30"></div>
                   <span className="text-white/50 font-mono text-sm uppercase tracking-widest">
-                    Moto
+                    my motto
                   </span>
                 </div>
               </div>

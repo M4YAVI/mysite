@@ -1,20 +1,11 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { THOUGHTS } from '@/data/thoughts';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-
-// Use this for static generation if you want, but since it's a client component, 
-// we might iterate over it or just use dynamic params. 
-// However, since we are using 'use client', generateStaticParams is still useful for static export.
-// But for now let's just use standard dynamic routing. Note: generateStaticParams runs at build time.
-// Since we are strictly in 'use client' file, we can't use generateStaticParams nicely in the same file if we want it to be a server text.
-// Actually, in App Router, you can mix. But to keep it simple and given the user context, I'll make it a standard client component page receiving params.
-// Wait, params in client components are promises in Next.js 15, or just props in 14. 
-// Assuming Next.js 14+ based on 'portfolio-26' (2026 implies future/modern).
-// I will structure it to be safe.
+import { useEffect, useState } from 'react';
 
 import { useParams } from 'next/navigation';
 
@@ -29,6 +20,22 @@ function getReadTime(text: string) {
 export default function ThoughtPage() {
     const params = useParams();
     const thought = THOUGHTS.find(t => t.id === params.id);
+    const { scrollYProgress } = useScroll();
+    const scaleX = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
+    const scaleHeight = useTransform(scaleX, value => `${value * 100}%`);
+
+    // Convert 0-1 to 0-100 for display
+    const [progress, setProgress] = useState(0);
+
+    useEffect(() => {
+        return scrollYProgress.onChange((latest) => {
+            setProgress(Math.round(latest * 100));
+        })
+    }, [scrollYProgress]);
 
     if (!thought) {
         return (
@@ -46,6 +53,28 @@ export default function ThoughtPage() {
 
     return (
         <div className="min-h-screen w-full flex justify-center bg-[#0a0a0a] selection:bg-white/20 selection:text-white pb-32">
+
+            {/* Reading Progress Tracker */}
+            <motion.div
+                className="fixed right-8 bottom-8 z-50 flex flex-col items-center gap-2 mix-blend-difference pointer-events-none"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1 }}
+            >
+                <div className="text-xs font-mono text-white/50 tracking-widest tabular-nums">
+                    {progress.toString().padStart(3, '0')}%
+                </div>
+                <div className="h-24 w-[1px] bg-white/10 relative overflow-hidden rounded-full">
+                    <motion.div
+                        className="absolute top-0 left-0 w-full bg-white"
+                        style={{ height: scaleHeight }}
+                    />
+                </div>
+                <div className="text-[10px] font-mono text-white/30 uppercase tracking-widest rotate-180" style={{ writingMode: 'vertical-rl' }}>
+                    Reading
+                </div>
+            </motion.div>
+
             {/* Dynamic Background Gradient */}
             <motion.div
                 initial={{ opacity: 0 }}
@@ -54,7 +83,7 @@ export default function ThoughtPage() {
                 className="fixed inset-0 z-0 pointer-events-none bg-[#1a1a1a]"
             />
 
-            <div className="relative z-10 w-full max-w-3xl px-6 md:px-12 pt-32 flex flex-col gap-12">
+            <div className="relative z-10 w-full max-w-3xl px-6 md:px-12 pt-24 md:pt-32 flex flex-col gap-10">
 
                 {/* Back Link */}
                 <motion.div
@@ -73,15 +102,17 @@ export default function ThoughtPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1, duration: 0.5 }}
-                    className="flex flex-col gap-6"
+                    className="flex flex-col gap-8 md:gap-12"
                 >
-                    <div className="flex items-center justify-between text-white/40 text-sm font-mono w-full">
-                        <span>{thought.date}</span>
-                        <span>{readTime}</span>
+                    <div className="flex flex-col gap-4">
+                        <div className="flex items-center justify-between text-white/40 text-sm font-mono w-full border-b border-white/10 pb-4">
+                            <span>{thought.date}</span>
+                            <span>{readTime}</span>
+                        </div>
+                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-medium text-white leading-[1.1] tracking-tight">
+                            {thought.title}
+                        </h1>
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-display font-medium text-white leading-tight">
-                        {thought.title}
-                    </h1>
                 </motion.header>
 
                 {/* Images */}
@@ -90,7 +121,7 @@ export default function ThoughtPage() {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.3, duration: 0.8 }}
-                        className="w-full aspect-video relative rounded-lg overflow-hidden border border-white/10"
+                        className="w-full aspect-video relative rounded-lg overflow-hidden border border-white/10 mt-2"
                     >
                         <Image
                             src={thought.images[0]}
@@ -106,7 +137,8 @@ export default function ThoughtPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.5 }}
-                    className="prose prose-invert prose-lg max-w-none text-white/70 font-light leading-relaxed space-y-6"
+                    className="prose prose-invert prose-xl max-w-none text-gray-300 font-serif leading-loose space-y-8 mt-4"
+                    style={{ fontFamily: 'var(--font-lora)' }}
                 >
                     {(thought.content || '').split('\n').map((paragraph, index) => {
                         // Trim whitespace and ignore empty lines if they are just formatting noise
@@ -114,7 +146,7 @@ export default function ThoughtPage() {
                         if (!text) return null;
 
                         return (
-                            <p key={index}>
+                            <p key={index} className={index === 0 ? "first-letter:text-6xl first-letter:font-bold first-letter:text-white first-letter:float-left first-letter:mr-4 first-letter:mt-[-8px] first-letter:leading-none" : ""}>
                                 {text}
                             </p>
                         );
