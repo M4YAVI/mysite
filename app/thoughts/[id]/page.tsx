@@ -96,10 +96,19 @@ export default function ThoughtPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.5 }}
-                    className="prose prose-invert prose-lg max-w-none text-white/70 font-light leading-relaxed space-y-8"
+                    className="prose prose-invert prose-lg max-w-none text-white/70 font-light leading-relaxed space-y-6"
                 >
-                    {/* Render HTML content safely */}
-                    <div dangerouslySetInnerHTML={{ __html: thought.content || '' }} />
+                    {(thought.content || '').split('\n').map((paragraph, index) => {
+                        // Trim whitespace and ignore empty lines if they are just formatting noise
+                        const text = paragraph.trim();
+                        if (!text) return null;
+
+                        return (
+                            <p key={index}>
+                                {text}
+                            </p>
+                        );
+                    })}
                 </motion.div>
 
                 {/* Footer / Contact for thought */}
