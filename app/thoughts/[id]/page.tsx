@@ -42,7 +42,7 @@ export default function ThoughtPage() {
             <div className="min-h-screen w-full flex items-center justify-center text-white">
                 <div className="text-center">
                     <h1 className="text-4xl font-bold mb-4">404</h1>
-                    <p className="text-white/60">Thought not found.</p>
+                    <p className="text-white">Thought not found.</p>
                     <Link href="/thoughts" className="mt-8 text-white hover:underline block">Back to thoughts</Link>
                 </div>
             </div>
@@ -61,7 +61,7 @@ export default function ThoughtPage() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1 }}
             >
-                <div className="text-xs font-mono text-white/50 tracking-widest tabular-nums">
+                <div className="text-xs font-mono text-white tracking-widest tabular-nums">
                     {progress.toString().padStart(3, '0')}%
                 </div>
                 <div className="h-24 w-[1px] bg-white/10 relative overflow-hidden rounded-full">
@@ -70,7 +70,7 @@ export default function ThoughtPage() {
                         style={{ height: scaleHeight }}
                     />
                 </div>
-                <div className="text-[10px] font-mono text-white/30 uppercase tracking-widest rotate-180" style={{ writingMode: 'vertical-rl' }}>
+                <div className="text-[10px] font-mono text-white uppercase tracking-widest rotate-180" style={{ writingMode: 'vertical-rl' }}>
                     Reading
                 </div>
             </motion.div>
@@ -91,7 +91,7 @@ export default function ThoughtPage() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <Link href="/thoughts" className="text-white/40 hover:text-white transition-colors font-mono text-xs uppercase tracking-widest flex items-center gap-2 group">
+                    <Link href="/thoughts" className="text-white hover:text-white transition-colors font-mono text-xs uppercase tracking-widest flex items-center gap-2 group">
                         <span className="group-hover:-translate-x-1 transition-transform">←</span>
                         Back to thoughts
                     </Link>
@@ -105,7 +105,7 @@ export default function ThoughtPage() {
                     className="flex flex-col gap-8 md:gap-12"
                 >
                     <div className="flex flex-col gap-4">
-                        <div className="flex items-center justify-between text-white/40 text-sm font-mono w-full border-b border-white/10 pb-4">
+                        <div className="flex items-center justify-between text-white text-sm font-mono w-full border-b border-white/10 pb-4">
                             <span>{thought.date}</span>
                             <span>{readTime}</span>
                         </div>
@@ -137,7 +137,7 @@ export default function ThoughtPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.5 }}
-                    className="prose prose-invert prose-xl max-w-none text-gray-300 leading-loose space-y-8 mt-4"
+                    className="prose prose-invert prose-xl max-w-none text-white leading-loose space-y-8 mt-4"
                 >
                     {(thought.content || '').split('\n').map((paragraph, index) => {
                         // Trim whitespace and ignore empty lines if they are just formatting noise
@@ -159,8 +159,8 @@ export default function ThoughtPage() {
                     transition={{ delay: 0.6 }}
                     className="pt-12 border-t border-white/10 mt-12"
                 >
-                    <p className="text-white/40 italic font-serif">
-                        Written by <span className="text-white/60">Aryayama</span>.
+                    <p className="text-white italic font-serif">
+                        Written by <span className="text-white">Aryayama</span>.
                     </p>
                 </motion.div>
             </div>
