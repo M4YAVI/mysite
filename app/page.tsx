@@ -132,9 +132,13 @@ export default function Home() {
                   </div>
                 </div>
 
-                <p className="text-white/70 text-lg leading-relaxed font-light">
-                  {PROFILE.description}
-                </p>
+                <div className="text-white/70 text-lg leading-relaxed font-light space-y-4">
+                  {PROFILE.description.split('\n').map((paragraph, index) => {
+                    const text = paragraph.trim();
+                    if (!text) return null;
+                    return <p key={index}>{text}</p>;
+                  })}
+                </div>
               </div>
             </BentoItem>
 
@@ -143,18 +147,12 @@ export default function Home() {
               rowSpan="md:row-span-2"
               delay={0.3}
             >
-              <div className="h-full flex flex-col justify-between">
-                {/* <div className="space-y-4">
-                    <div className="flex justify-between items-center border-b border-white/10 pb-2">
-                       <span className="text-white/40 uppercase text-xs font-bold tracking-wider">Age</span>
-                       <span className="font-mono text-xl">{PROFILE.age}</span>
-                     </div> */}
-
+              <div className="h-full flex flex-col justify-center gap-6 p-2">
                 <div>
-                  <span className="text-white/40 uppercase text-xs font-bold tracking-wider block mb-2">Likes</span>
+                  <span className="text-white/30 uppercase text-[10px] font-bold tracking-[0.2em] block mb-3">Likes</span>
                   <div className="flex flex-wrap gap-2">
                     {PROFILE.likes.map(like => (
-                      <span key={like} className="text-xs border border-white/20 px-2 py-1 rounded-md text-white/80">
+                      <span key={like} className="text-xs font-medium bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 hover:scale-105 cursor-default">
                         {like}
                       </span>
                     ))}
@@ -162,16 +160,15 @@ export default function Home() {
                 </div>
 
                 <div>
-                  <span className="text-red-400/60 uppercase text-xs font-bold tracking-wider block mb-2">Dislikes</span>
+                  <span className="text-white/30 uppercase text-[10px] font-bold tracking-[0.2em] block mb-3">Dislikes</span>
                   <div className="flex flex-wrap gap-2">
                     {PROFILE.hates.map(hate => (
-                      <span key={hate} className="text-xs border border-red-500/20 bg-red-500/5 px-2 py-1 rounded-md text-red-200/80">
+                      <span key={hate} className="text-xs font-medium bg-red-500/5 border border-red-500/10 px-3 py-1.5 rounded-full text-red-200/60 hover:text-red-200 hover:bg-red-500/10 transition-all duration-300 hover:scale-105 cursor-default">
                         {hate}
                       </span>
                     ))}
                   </div>
                 </div>
-                {/* </div> */}
               </div>
             </BentoItem>
           </motion.div>
