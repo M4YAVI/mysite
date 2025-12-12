@@ -12,6 +12,11 @@ export const size = {
 export const contentType = 'image/png';
 
 export default async function Image() {
+    // Fetch the image and convert to arrayBuffer
+    const profileImage = await fetch(new URL('https://aryayama.netlify.app/me.jpeg')).then(
+        (res) => res.arrayBuffer()
+    );
+
     return new ImageResponse(
         (
             <div
@@ -63,7 +68,8 @@ export default async function Image() {
                     >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                            src={`https://aryayama.netlify.app/me.jpeg`}
+                            // @ts-ignore
+                            src={profileImage}
                             alt={PROFILE.name}
                             width="120"
                             height="120"

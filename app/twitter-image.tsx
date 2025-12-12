@@ -12,6 +12,11 @@ export const size = {
 export const contentType = 'image/png';
 
 export default async function Image() {
+    // Fetch the image and convert to arrayBuffer
+    const profileImage = await fetch(new URL('https://aryayama.netlify.app/me.jpeg')).then(
+        (res) => res.arrayBuffer()
+    );
+
     return new ImageResponse(
         (
             <div
@@ -47,6 +52,30 @@ export default async function Image() {
                         gap: '20px',
                     }}
                 >
+                    <div
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '150px',
+                            height: '150px',
+                            borderRadius: '50%',
+                            background: '#fff',
+                            overflow: 'hidden',
+                            marginBottom: '30px',
+                            boxShadow: '0 0 40px rgba(255,255,255,0.1)',
+                        }}
+                    >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                            // @ts-ignore
+                            src={profileImage}
+                            alt={PROFILE.name}
+                            width="150"
+                            height="150"
+                            style={{ objectFit: 'cover' }}
+                        />
+                    </div>
                     <h1
                         style={{
                             fontSize: '100px',
