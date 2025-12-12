@@ -19,31 +19,55 @@ export const metadata: Metadata = {
     template: `%s | ${PROFILE.name}`,
   },
   description: PROFILE.description,
-  keywords: ["portfolio", "full stack", "developer", "AI", "engineer", "creative", "minimalist"],
-  authors: [{ name: PROFILE.name }],
+  applicationName: PROFILE.name,
+  authors: [{ name: PROFILE.name, url: 'https://aryayama.netlify.app' }],
+  generator: 'Next.js',
+  keywords: ["portfolio", "full stack", "developer", "AI", "engineer", "creative", "minimalist", "web design", "react", "nextjs"],
+  referrer: 'origin-when-cross-origin',
   creator: PROFILE.name,
+  publisher: PROFILE.name,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://aryayama.netlify.app",
-    title: PROFILE.name,
+    title: {
+      default: PROFILE.name,
+      template: `%s | ${PROFILE.name}`,
+    },
     description: PROFILE.description,
+    url: 'https://aryayama.netlify.app',
     siteName: PROFILE.name,
     images: [
       {
-        url: "/me.jpeg",
+        url: '/opengraph-image', // Dynamic OG image route
+        width: 1200,
+        height: 630,
+        alt: PROFILE.name,
+      },
+      {
+        url: '/me.jpeg', // Fallback
         width: 1200,
         height: 630,
         alt: PROFILE.name,
       },
     ],
+    locale: 'en_US',
+    type: 'website',
   },
   twitter: {
-    card: "summary_large_image",
-    title: PROFILE.name,
+    card: 'summary_large_image',
+    title: {
+      default: PROFILE.name,
+      template: `%s | ${PROFILE.name}`,
+    },
     description: PROFILE.description,
-    creator: "@M4Y4VI",
-    images: ["/me.jpeg"],
+    creator: '@M4Y4VI',
+    images: ['/twitter-image'], // Dynamic Twitter image route
   },
   robots: {
     index: true,
@@ -51,9 +75,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
   },
 };
