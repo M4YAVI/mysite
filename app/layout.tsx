@@ -8,12 +8,12 @@ const satoshi = localFont({
   src: './Satoshi-Font/Satoshi-Variable.ttf',
   variable: '--font-satoshi',
   display: 'swap',
-  weight: '300 900', // Variable font weight range
+  weight: '300 900',
 });
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://aryayama.vercel.app'), // Placeholder, user to update
+  metadataBase: new URL('https://aryayama.netlify.app'),
   title: {
     default: PROFILE.name,
     template: `%s | ${PROFILE.name}`,
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://aryayama.vercel.app",
+    url: "https://aryayama.netlify.app",
     title: PROFILE.name,
     description: PROFILE.description,
     siteName: PROFILE.name,

@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { TextPlugin } from 'gsap/TextPlugin';
 
-gsap.registerPlugin(TextPlugin);
 
 interface GlitchTextProps {
   text: string;
@@ -19,19 +17,30 @@ const GlitchText: React.FC<GlitchTextProps> = ({ text, className, triggerKey }) 
     const chars = "!<>-_\\/[]{}—=+*^?#________";
 
     const ctx = gsap.context(() => {
-      gsap.to(elementRef.current, {
-        duration: 1.5,
-        text: {
-          value: text,
-          delimiter: "",
-          scrambleText: {
-            text: text,
-            chars: chars,
-            revealDelay: 0.2,
-            speed: 0.3
-          }
-        },
+      const duration = 1.5;
+      const tl = gsap.timeline();
+
+      const scrambleObj = { val: 0 };
+      const textLength = text.length;
+
+      tl.to(scrambleObj, {
+        val: textLength,
+        duration: duration,
         ease: "power2.out",
+        onUpdate: () => {
+          const progress = Math.floor(scrambleObj.val);
+          let result = "";
+          for (let i = 0; i < textLength; i++) {
+            if (i < progress) {
+              result += text[i];
+            } else {
+              result += chars[Math.floor(Math.random() * chars.length)];
+            }
+          }
+          if (elementRef.current) {
+            elementRef.current.innerText = result;
+          }
+        }
       });
     }, elementRef);
 
