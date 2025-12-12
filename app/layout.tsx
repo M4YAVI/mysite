@@ -42,20 +42,6 @@ export const metadata: Metadata = {
     description: PROFILE.description,
     url: 'https://aryayama.netlify.app',
     siteName: PROFILE.name,
-    images: [
-      {
-        url: '/opengraph-image', // Dynamic OG image route
-        width: 1200,
-        height: 630,
-        alt: PROFILE.name,
-      },
-      {
-        url: '/me.jpeg', // Fallback
-        width: 1200,
-        height: 630,
-        alt: PROFILE.name,
-      },
-    ],
     locale: 'en_US',
     type: 'website',
   },
@@ -67,7 +53,6 @@ export const metadata: Metadata = {
     },
     description: PROFILE.description,
     creator: '@M4Y4VI',
-    images: ['/twitter-image'], // Dynamic Twitter image route
   },
   robots: {
     index: true,
