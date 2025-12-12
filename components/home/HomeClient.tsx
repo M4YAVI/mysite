@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import BentoItem from "@/components/BentoItem";
-import GlitchText from "@/components/GlitchText";
+import SmoothText from "@/components/SmoothText";
 import { PROFILE } from "@/data/profile";
 import Navigation from "@/components/Navigation";
 
@@ -55,7 +55,7 @@ export default function HomeClient() {
                                 </svg>
 
                                 <h2 className="font-display text-2xl md:text-4xl lg:text-5xl font-bold leading-tight">
-                                    <GlitchText text={PROFILE.quote} triggerKey={PROFILE.id} />
+                                    <SmoothText text={PROFILE.quote} triggerKey={PROFILE.id} />
                                 </h2>
 
                                 <div className="mt-6 flex items-center gap-3">
